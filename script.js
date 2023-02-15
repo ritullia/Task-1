@@ -10,15 +10,38 @@ Pastaba: atvaizdavimas turi būti matomas pateikus formą ir pateikiamas
 ------------------------------------------------------------------- */
 console.log("Veikia")
 
-document.getElementById("search").addEventListener("input", function (e) {
+let calculateBtn = document.querySelector('#submit-btn');
+
+function convertWeight() {
+
     let outputDiv = document.getElementById("output")
-    let kg = e.target.value;
+    let kg = document.getElementById("search").value
+    console.log(kg)
 
     let lb = document.createElement("p");
-    lb.textContent = Math.floor(kg * 2.2046)
+    lb.classList.add("weight-text");
+    lb.textContent = `lbs ${kg * 2.2046}`;
 
-    outputDiv.append(lb)
-})
+    let grams = document.createElement("p");
+    grams.classList.add("weight-text");
+    grams.textContent = `g ${kg / 0.0010000}`
+
+    let oz = document.createElement("p");
+    oz.classList.add("weight-text");
+    oz.textContent = `oz ${kg * 35.274}`;
+
+    outputDiv.append(lb, grams, oz)
+}
+
+calculateBtn.addEventListener("click", ((event) => {
+    event.preventDefault();
+    convertWeight();
+}))
+
+
+
+
+
 
 
 
