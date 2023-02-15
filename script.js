@@ -12,28 +12,30 @@ console.log("Veikia")
 
 let calculateBtn = document.querySelector('#submit-btn');
 
-function convertWeightLb() {
+function convertWeight() {
 
     let outputDiv = document.getElementById("output")
     let kg = document.getElementById("search").value
     console.log(kg)
 
     let lb = document.createElement("p");
-    lb.textContent = kg * 2.2046;
+    lb.classList.add("weight-text");
+    lb.textContent = `lbs ${kg * 2.2046}`;
 
     let grams = document.createElement("p");
-    grams.textContent = kg / 0.0010000;
+    grams.classList.add("weight-text");
+    grams.textContent = `g ${kg / 0.0010000}`
 
     let oz = document.createElement("p");
-    oz.textContent = kg * 35.274;
+    oz.classList.add("weight-text");
+    oz.textContent = `oz ${kg * 35.274}`;
 
     outputDiv.append(lb, grams, oz)
 }
 
 calculateBtn.addEventListener("click", ((event) => {
-    event.preventDefault()
-    console.log("CLICK")
-    convertWeightLb()
+    event.preventDefault();
+    convertWeight();
 }))
 
 
